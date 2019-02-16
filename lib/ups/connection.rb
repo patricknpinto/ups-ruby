@@ -94,6 +94,9 @@ module UPS
     end
 
     def make_confirm_request(confirm_builder)
+      puts "\n\n ******* SHIP REQUEST *******"
+      puts "url: #{build_url(SHIP_CONFIRM_PATH)}"
+      puts confirm_builder.to_xml
       make_ship_request confirm_builder,
                         SHIP_CONFIRM_PATH,
                         Parsers::ShipConfirmParser.new

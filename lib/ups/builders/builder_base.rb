@@ -175,6 +175,10 @@ module UPS
         end
       end
 
+      def add_return_service
+        shipment_root << return_service
+      end
+
       # Returns a String representation of the XML document being built
       #
       # @return [String]
@@ -190,6 +194,14 @@ module UPS
         self.shipment_root = Element.new('Shipment')
         self.access_request = Element.new('AccessRequest')
         root << shipment_root
+      end
+
+      def return_service
+        return_service = Element.new('ReturnService')
+        code = Element.new('Code')
+        code << '2'
+        return_service << code
+        return_service
       end
 
       def packaging_type
